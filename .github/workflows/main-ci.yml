@@ -17,6 +17,9 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
+      - name: Configurar entorno
+        run: cd app
+
       - name: Instalar pnpm
         run: corepack enable && corepack prepare pnpm@latest --activate
 
