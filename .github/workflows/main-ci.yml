@@ -1,0 +1,39 @@
+name: Main CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Instalar pnpm
+        run: corepack enable && corepack prepare pnpm@latest --activate
+
+      - name: Instalar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+          cache: "pnpm"
+
+      - name: Instalar dependencias
+        run: pnpm install
+
+      - name: Ejecutar pruebas con cobertura
+        run: pnpm test -- --coverage
+
+      - name: Verificar cobertura mínima del 70%
+        run: |
+          COVERAGE=$(pnpm test -- --coverage | grep 'All files' | awk '{print $4}' | sed 's/%//')
+          if (( $(echo "$COVERAGE < 70" | bc -l) )); then
+            echo "❌ La cobertura es menor al 70% ($COVERAGE%)."
+            exit 1
+          else
+            echo "✅ La cobertura es suficiente ($COVERAGE%)."
+          fi
