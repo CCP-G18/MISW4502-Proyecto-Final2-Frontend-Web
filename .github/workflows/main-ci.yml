@@ -17,9 +17,6 @@ jobs:
       - name: Checkout del código
         uses: actions/checkout@v3
 
-      - name: Configurar entorno
-        run: cd app
-
       - name: Instalar pnpm
         run: corepack enable && corepack prepare pnpm@latest --activate
 
@@ -28,12 +25,15 @@ jobs:
         with:
           node-version: 20
           cache: "pnpm"
+          cache-dependency-path: app/pnpm-lock.yaml 
 
       - name: Instalar dependencias
         run: pnpm install
+        working-directory: app
 
       - name: Ejecutar pruebas con cobertura
         run: pnpm test -- --coverage
+        working-directory: app
 
       - name: Verificar cobertura mínima del 70%
         run: |
@@ -44,3 +44,4 @@ jobs:
           else
             echo "✅ La cobertura es suficiente ($COVERAGE%)."
           fi
+        working-directory: app
