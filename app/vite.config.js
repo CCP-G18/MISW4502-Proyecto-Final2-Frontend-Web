@@ -16,4 +16,8 @@ export default defineConfig({
       exclude: ['node_modules/', 'src/tests/', 'vite.config.js', 'eslint.config.js'],
     },
   },
+  server: {
+    port: 8080,
+    host: "0.0.0.0"
+  },
 })

@@ -1,0 +1,17 @@
+# Ignorar node_modules
+node_modules
+pnpm-lock.yaml
+
+# Ignorar archivos de configuración locales
+.env
+.DS_Store
+
+# Ignorar carpetas de build innecesarias
+dist
+build
+
+# Ignorar archivos de Git y editor
+.git
+.gitignore
+.vscode
+.idea
