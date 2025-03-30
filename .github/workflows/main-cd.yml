@@ -28,10 +28,10 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: cd app && pnpm install --frozen-lockfile
 
       - name: Build project
-        run: pnpm build
+        run: cd app && pnpm build
 
       - name: Authenticate with Google Cloud
         uses: google-github-actions/auth@v2
