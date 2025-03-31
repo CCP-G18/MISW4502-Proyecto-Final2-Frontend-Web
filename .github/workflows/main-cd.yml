@@ -52,7 +52,7 @@ jobs:
           REGION: ${{ secrets.GCP_REGION }}
           SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
         run: |
-          docker build -t $REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/$SERVICE_NAME:latest -f Dockerfile .
+          docker build -t $REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/$SERVICE_NAME:latest -f app/Dockerfile ./app
           docker push $REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/$SERVICE_NAME:latest
 
       - name: Deploy to Cloud Run
