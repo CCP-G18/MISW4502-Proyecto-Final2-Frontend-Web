@@ -27,7 +27,6 @@ const Login = () => {
         }
     };
 
-
     return (
         <>
             <section className="w-full max-w-xs md:max-w-md mb-10" aria-label="Formulario de inicio de sesión">
@@ -44,7 +43,6 @@ const Login = () => {
                                     <UserIcon className="w-5 text-black" />
                                 </span>
                             </div>
-
                             <label htmlFor="password" className="block font-medium mt-3">Contraseña</label>
                             <div className="relative">
                                 <input id="password" type="password" placeholder="Ingresa tu contraseña" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]"   onChange={(e) => setPassword(e.target.value)} required />
