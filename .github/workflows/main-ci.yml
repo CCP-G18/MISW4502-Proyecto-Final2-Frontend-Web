@@ -29,12 +29,12 @@ jobs:
         working-directory: app
 
       - name: Ejecutar pruebas con cobertura
-        run: pnpm test -- --coverage
+        run: pnpm run test
         working-directory: app
 
       - name: Verificar cobertura mínima del 70%
         run: |
-          COVERAGE=$(pnpm test -- --coverage | grep 'All files' | awk '{print $4}' | sed 's/%//')
+          COVERAGE=$(pnpm run test | grep 'All files' | awk '{print $4}' | sed 's/%//')
           if (( $(echo "$COVERAGE < 70" | bc -l) )); then
             echo "❌ La cobertura es menor al 70% ($COVERAGE%)."
             exit 1

@@ -20,8 +20,7 @@ const Login = () => {
         try {
             await login(email, password);
             navigate('/');
-        } catch (error) {
-            console.warn(error)
+        } catch {
             setError('Credenciales inválidas');
         } finally {
             setLoading(false);
