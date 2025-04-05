@@ -64,5 +64,5 @@ jobs:
             --region $REGION \
             --platform managed \
             --allow-unauthenticated \
-            --port 8080
+            --port 8080 \
             --set-env-vars VITE_API_URL=$VITE_API_URL
