@@ -39,7 +39,7 @@ const Login = () => {
                         <form onSubmit={handleSubmit}>
                             <label htmlFor="username" className="block font-medium">Usuario</label>
                             <div className="relative">
-                                <input id="username" type="text" placeholder="Ingresa tu usuario o correo electrónico" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]" onChange={(e) => setEmail(e.target.value)} required />
+                                <input id="username" type="text" placeholder="Ingresa tu usuario o correo electrónico" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]" onChange={(e) => setEmail(e.target.value)} required autoComplete="username" />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                                     <UserIcon className="w-5 text-black" />
                                 </span>
@@ -47,7 +47,7 @@ const Login = () => {
 
                             <label htmlFor="password" className="block font-medium mt-3">Contraseña</label>
                             <div className="relative">
-                                <input id="password" type="password" placeholder="Ingresa tu contraseña" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]"   onChange={(e) => setPassword(e.target.value)} required />
+                                <input id="password" type="password" placeholder="Ingresa tu contraseña" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]" onChange={(e) => setPassword(e.target.value)} required autoComplete="current-password" />
                                 <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
                                     <LockClosedIcon className="w-5 text-black" />
                                 </span>
