@@ -20,12 +20,14 @@ const Login = () => {
         try {
             await login(email, password);
             navigate('/');
-        } catch {
+        } catch (error) {
+            console.warn(error)
             setError('Credenciales inválidas');
         } finally {
             setLoading(false);
         }
     };
+
 
     return (
         <>
@@ -43,6 +45,7 @@ const Login = () => {
                                     <UserIcon className="w-5 text-black" />
                                 </span>
                             </div>
+
                             <label htmlFor="password" className="block font-medium mt-3">Contraseña</label>
                             <div className="relative">
                                 <input id="password" type="password" placeholder="Ingresa tu contraseña" className="w-full pl-10 p-2 border border-gray-400 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]"   onChange={(e) => setPassword(e.target.value)} required />
