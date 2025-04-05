@@ -9,17 +9,19 @@ const Login = () => {
     const { login } = useContext(AuthContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setError('');
         setLoading(true);
         try {
             await login(email, password);
             navigate('/');
-        } catch (error) {
-            alert('Error en el login: ' + error);
+        } catch {
+            setError('Credenciales inválidas');
         } finally {
             setLoading(false);
         }
@@ -51,6 +53,7 @@ const Login = () => {
                                 </span>
                             </div>
 
+                            {error && <p className="text-red-600 text-sm mt-4 text-center">{error}</p>}
 
                             <button type="submit" className="bg-[var(--color-secondary)] text-white p-2 mt-6 w-full rounded font-semibold cursor-pointer hover:opacity-80 hover:scale-105" aria-label="Iniciar sesión">
                                 {loading ? 'Cargando...' : 'Iniciar Sesión'}

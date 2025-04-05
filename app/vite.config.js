@@ -9,6 +9,7 @@ export default defineConfig({
     tailwindcss(),
   ],
   test: {
+    environment: 'jsdom',
     globals: true,
     coverage: {
       provider: 'v8',
