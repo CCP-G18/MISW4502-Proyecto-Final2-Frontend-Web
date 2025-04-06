@@ -1,5 +1,6 @@
 import React from 'react';
 import { Outlet } from "react-router";
+import Footer from '../components/Footer';
 
 const AuthLayout = () => {
   return (
@@ -10,12 +11,7 @@ const AuthLayout = () => {
         <main className='flex-grow flex justify-center items-center'>
             <Outlet />
         </main>
-        <footer className="w-full border-t">
-            <div className="flex flex-col justify-center text-center m-2 sm:flex-row sm:justify-between sm:mx-4">
-                <p><span className='font-bold'>Copyright CCP</span> © 2025</p>
-                <p>Sitio web logístico</p>
-            </div>
-        </footer>
+        <Footer />
     </>
   );
 };
