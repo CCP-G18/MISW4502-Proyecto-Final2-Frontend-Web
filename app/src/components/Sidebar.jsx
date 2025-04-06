@@ -14,7 +14,7 @@ export default function Sidebar() {
                 <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
                     <UsersIcon className="w-5 h-5"/> Fabricantes
                 </NavLink>
-                <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
+                <NavLink to="/vendedores" className="flex items-center gap-2 hover:text-gray-300">
                     <BuildingStorefrontIcon className="w-5 h-5"/> Vendedores
                 </NavLink>
                 <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">

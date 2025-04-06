@@ -2,6 +2,7 @@ import { Route, Routes } from 'react-router';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Logout from '../pages/Logout';
+import Sellers from '../pages/Sellers';
 import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
@@ -16,6 +17,7 @@ const AppRoutes = () => {
             <Route path='/' element={<MainLayout />}>
                 <Route element={<PrivateRoute />}>
                     <Route index element={<Home />} />
+                    <Route path="/vendedores" element={<Sellers />} />
                 </Route>
             </Route>
         </Routes>
