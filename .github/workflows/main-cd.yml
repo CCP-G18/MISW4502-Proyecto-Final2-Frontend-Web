@@ -28,6 +28,8 @@ jobs:
         run: cd app && pnpm install --frozen-lockfile
 
       - name: Build project
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: cd app && pnpm build
 
       - name: Authenticate with Google Cloud
@@ -48,6 +50,7 @@ jobs:
           PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
           REGION: ${{ secrets.GCP_REGION }}
           SERVICE_NAME: ${{ secrets.GCP_SERVICE_NAME }}
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
         run: |
           docker build -t $REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/$SERVICE_NAME:latest -f app/Dockerfile ./app
           docker push $REGION-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/$SERVICE_NAME:latest
