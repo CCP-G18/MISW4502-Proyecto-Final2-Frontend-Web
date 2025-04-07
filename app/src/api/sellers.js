@@ -15,3 +15,22 @@ export const getSellers = async () => {
         return [];
     }
 };
+
+export const createSeller = async (sellerData) => {
+    try {
+        const response = await axios.post(
+            `${API_URL}/sellers`, 
+            sellerData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                },
+            }
+        );
+        return response.data.data;
+    } catch (error) {
+        const message = error.response?.data?.error || 'Error al crear el vendedor';
+        throw new Error(message);
+    }
+};
