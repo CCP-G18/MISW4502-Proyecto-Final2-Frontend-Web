@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import Breadcrumb from "./Breadcumb";
+import Breadcrumb from "./Breadcrumb";
 
 export default function Topbar() {
     return (
