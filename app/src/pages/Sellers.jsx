@@ -53,7 +53,6 @@ const Sellers = () => {
         showIfNeeded();
     }, [location.state, location.pathname, navigate, showNotification, notified]);
 
-
     const data = useMemo(() => sellers, [sellers]);
     const columns = useMemo(
         () => [
