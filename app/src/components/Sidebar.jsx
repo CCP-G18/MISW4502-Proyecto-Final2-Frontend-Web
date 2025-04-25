@@ -17,7 +17,7 @@ export default function Sidebar() {
                 <NavLink to="/vendedores" className="flex items-center gap-2 hover:text-gray-300">
                     <BuildingStorefrontIcon className="w-5 h-5"/> Vendedores
                 </NavLink>
-                <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
+                <NavLink to="/productos" className="flex items-center gap-2 hover:text-gray-300">
                     <CubeIcon className="w-5 h-5"/> Productos
                 </NavLink>
                 <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
