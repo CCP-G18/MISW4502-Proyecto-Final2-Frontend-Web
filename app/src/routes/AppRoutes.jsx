@@ -3,6 +3,7 @@ import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Logout from '../pages/Logout';
 import Sellers from '../pages/Sellers';
+import Products from '../pages/Products';
 import CreateSeller from '../pages/CreateSeller';
 import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
@@ -20,6 +21,7 @@ const AppRoutes = () => {
                     <Route index element={<Home />} />
                     <Route path="/vendedores" element={<Sellers />} />
                     <Route path="/vendedores/crear" element={<CreateSeller />} />
+                    <Route path="/productos" element={<Products />} />
                 </Route>
             </Route>
         </Routes>
