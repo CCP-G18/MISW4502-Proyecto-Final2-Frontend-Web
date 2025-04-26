@@ -13,9 +13,7 @@ const Products = () => {
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [sorting, setSorting] = useState([
-    { id: 'updated_at', desc: true }
-  ]);
+  const [sorting, setSorting] = useState([]);
   const [notified, setNotified] = useState(false);
   const { showNotification } = useNotification();
   const location = useLocation();

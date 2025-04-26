@@ -8,6 +8,7 @@ import CreateSeller from '../pages/CreateSeller';
 import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
+import CreateProduct from '../pages/CreateProduct';
 
 const AppRoutes = () => {
     return (
@@ -22,6 +23,7 @@ const AppRoutes = () => {
                     <Route path="/vendedores" element={<Sellers />} />
                     <Route path="/vendedores/crear" element={<CreateSeller />} />
                     <Route path="/productos" element={<Products />} />
+                    <Route path="/productos/crear" element={ <CreateProduct /> } />
                 </Route>
             </Route>
         </Routes>
