@@ -30,7 +30,7 @@ describe('Componente SalesPlan', () => {
 
   it('debería mostrar el loader mientras carga los datos', async () => {
     sellersApi.getSalesPlanBySeller.mockImplementation(() => 
-      new Promise(() => {}) // Nunca resuelve para simular loading
+      new Promise(() => {})
     );
 
     render(

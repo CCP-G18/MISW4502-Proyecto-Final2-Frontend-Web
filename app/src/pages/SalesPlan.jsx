@@ -108,7 +108,7 @@ const SalesPlan = () => {
             <div className="flex justify-between mb-4">
                 <div className="flex gap-4">
                     <h1 className="text-xl font-bold">Lista de planes de venta del vendedor</h1>
-                    <Link to="" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear nuevo plan de venta</Link>
+                    <Link to={`/vendedores/planes-venta/crear/${sellerId}`} className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear nuevo plan de venta</Link>
                 </div>
                 <input type="text" placeholder="Buscar..." value={globalFilter ?? ''} onChange={(e) => setGlobalFilter(e.target.value)} className="px-3 py-1 border rounded-md w-full max-w-sm" />
             </div>
