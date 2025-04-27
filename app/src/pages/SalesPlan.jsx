@@ -1,13 +1,17 @@
-import { useReactTable, getCoreRowModel, getPaginationRowModel, getFilteredRowModel, getSortedRowModel, flexRender } from '@tanstack/react-table';
-import { useState, useMemo, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router';
-import { getSellers } from '../api/sellers';
-import { useNotification } from '../context/NotificationContext';
-import Loader from '../components/Loader';
+import { useEffect, useMemo, useState } from "react";
+import { getSalesPlanBySeller } from "../api/sellers";
+import { Link, useLocation, useNavigate, useParams } from "react-router";
+import { useNotification } from "../context/NotificationContext";
+import { flexRender, getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable } from "@tanstack/react-table";
+import Loader from "../components/Loader";
+import { formatCurrency, formatDate } from "../utils/formatters"
 
-const Sellers = () => {
+
+
+const SalesPlan = () => {
+    const { sellerId } = useParams();
     const [globalFilter, setGlobalFilter] = useState('');
-    const [sellers, setSellers] = useState([]);
+    const [salesPlans, setSalesPlans] = useState([]);
     const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
@@ -20,19 +24,21 @@ const Sellers = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const uploadSellers = async () => {
+        const uploadSalesPlans = async () => {
+            console.log("seller id", sellerId);
             setLoading(true);
             try {
-                const data = await getSellers();
-                setSellers(data);
+                const data = await getSalesPlanBySeller(sellerId);
+                console.log("data", data);
+                setSalesPlans(data);
             } catch {
-                setError('No se encontraron vendedores');
+                setError("No se encontraron planes de venta para este vendedor");
             } finally {
                 setLoading(false);
             }
         };
-    
-        uploadSellers();
+
+        uploadSalesPlans();
     }, []);
 
     useEffect(() => {
@@ -44,57 +50,35 @@ const Sellers = () => {
                     location.state.message
                 );
                 setNotified(true);
-    
+
                 // Limpiar el state del location
                 navigate(location.pathname, { replace: true });
             }
         };
-    
+
         showIfNeeded();
     }, [location.state, location.pathname, navigate, showNotification, notified]);
 
-    const data = useMemo(() => sellers, [sellers]);
+    const data = useMemo(() => salesPlans, [salesPlans]);
     const columns = useMemo(
         () => [
             { header: '#', cell: ({ row }) => row.index + 1 + pagination.pageIndex * pagination.pageSize, },
-            { accessorKey: 'name', header: 'Nombre' },
-            { accessorKey: 'email', header: 'Correo Electrónico' },
-            { accessorKey: 'assigned_area', header: 'Área Asignada' },
-            { accessorKey: 'updated_at', header: 'Fecha de actualización', cell: () => null, meta: { isHidden: true, }},
-            {
-                id: 'acciones',
-                header: 'Acciones',
-                cell: ({ row }) => {
-                    const vendedor = row.original;
-                
-                    const handlePlanes = () => {
-                        console.log('Planes de venta para', vendedor.name);
-                        console.log('Planes de venta para', vendedor.id);
-                        navigate(`/vendedores/planes-venta/${vendedor.id}`, {
-                            state:  {
-                                sellerName: vendedor.name,
-                            },
-                        });
-                    };
-                
-                    const handleInforme = () => {
-                        console.log('Informe de', vendedor.name);
-                    };
-                
-                    return (
-                        <div className="flex space-x-2">
-                            <button onClick={handlePlanes} className="bg-[#E8DDCB] text-gray-800 px-3 font-semibold py-1 rounded-md hover:bg-gray-300 transition">
-                                Planes de venta
-                            </button>
-                            <button onClick={handleInforme} className="bg-[#E8DDCB] text-gray-800 px-3 font-semibold py-1 rounded-md hover:bg-gray-300 transition">
-                                Informe
-                            </button>
-                        </div>
-                    );
-                },
+            { 
+                accessorKey: 'initial_date', 
+                header: 'Fecha de Inicio',
+                cell: info => formatDate(info.getValue())
             },
+            { 
+                accessorKey: 'end_date', 
+                header: 'Fecha de Finalización',
+                cell: info => formatDate(info.getValue())
+            },
+            {
+                accessorKey: 'sales_goals',
+                header: 'Metas de Ventas',
+                cell: info => formatCurrency(info.getValue())
+              },
         ],
-        []
     );
 
     const table = useReactTable({
@@ -107,7 +91,6 @@ const Sellers = () => {
         },
         onSortingChange: setSorting,
         onPaginationChange: setPagination,
-        onGlobalFilterChange: setGlobalFilter,
         getCoreRowModel: getCoreRowModel(),
         getFilteredRowModel: getFilteredRowModel(),
         getPaginationRowModel: getPaginationRowModel(),
@@ -119,12 +102,13 @@ const Sellers = () => {
     );
     const columnCount = visibleColumns.length;
 
+
     return (
         <>
             <div className="flex justify-between mb-4">
                 <div className="flex gap-4">
-                    <h1 className="text-xl font-bold">Lista de vendedores</h1>
-                    <Link to="/vendedores/crear" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear vendedor</Link>
+                    <h1 className="text-xl font-bold">Lista de planes de venta del vendedor</h1>
+                    <Link to="" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear nuevo plan de venta</Link>
                 </div>
                 <input type="text" placeholder="Buscar..." value={globalFilter ?? ''} onChange={(e) => setGlobalFilter(e.target.value)} className="px-3 py-1 border rounded-md w-full max-w-sm" />
             </div>
@@ -136,7 +120,7 @@ const Sellers = () => {
                                 const isHidden = header.column.columnDef.meta?.isHidden;
                                 return !isHidden ? (
                                     <th key={header.id} className="px-4 py-2">
-                                    {flexRender(header.column.columnDef.header, header.getContext())}
+                                        {flexRender(header.column.columnDef.header, header.getContext())}
                                     </th>
                                 ) : null;
                             })}
@@ -178,7 +162,6 @@ const Sellers = () => {
                 )}
                 </tbody>
             </table>
-
             <div className="mt-4 flex justify-between items-center text-sm">
                 <div>
                     Página {table.getState().pagination.pageIndex + 1} de{' '}
@@ -194,7 +177,7 @@ const Sellers = () => {
                 </div>
             </div>
         </>
-    )
+    );
 };
-  
-export default Sellers;
+
+export default SalesPlan;

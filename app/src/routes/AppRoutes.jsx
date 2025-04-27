@@ -9,6 +9,7 @@ import AuthLayout from '../layouts/AuthLayout';
 import MainLayout from '../layouts/MainLayout';
 import PrivateRoute from './PrivateRoute';
 import CreateProduct from '../pages/CreateProduct';
+import SalesPlan from '../pages/SalesPlan';
 
 const AppRoutes = () => {
     return (
@@ -24,6 +25,7 @@ const AppRoutes = () => {
                     <Route path="/vendedores/crear" element={<CreateSeller />} />
                     <Route path="/productos" element={<Products />} />
                     <Route path="/productos/crear" element={ <CreateProduct /> } />
+                    <Route path="/vendedores/planes-venta/:sellerId" element={ <SalesPlan /> } />
                 </Route>
             </Route>
         </Routes>
