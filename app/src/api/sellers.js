@@ -34,3 +34,17 @@ export const createSeller = async (sellerData) => {
         throw new Error(message);
     }
 };
+
+export const getSalesPlanBySeller = async (sellerId) => {
+    try {
+        const response = await axios.get(`${API_URL}/sellers/${sellerId}/sales-plans`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data.data;
+    } catch (error) {
+        return [];
+    }
+}

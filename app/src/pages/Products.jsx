@@ -63,7 +63,7 @@ const Products = () => {
         accessorKey: 'unit_amount',
         header: 'Precio unitario',
         cell: info => formatCurrency(info.getValue())
-      },    ],
+      },],
     []
   );
 
