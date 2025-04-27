@@ -11,7 +11,7 @@ export default function Sidebar() {
                 <h2 className="text-3xl font-bold text-center p-3 border-b border-white/10 h-[65px] max-h-[65px]">CCP</h2>
             </Link>
             <nav className="flex-1 p-4 space-y-5 text-sm">
-                <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
+                <NavLink to="/fabricantes" className="flex items-center gap-2 hover:text-gray-300">
                     <UsersIcon className="w-5 h-5"/> Fabricantes
                 </NavLink>
                 <NavLink to="/vendedores" className="flex items-center gap-2 hover:text-gray-300">

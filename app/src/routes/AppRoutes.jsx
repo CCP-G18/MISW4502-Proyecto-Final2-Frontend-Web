@@ -11,6 +11,8 @@ import PrivateRoute from './PrivateRoute';
 import CreateProduct from '../pages/CreateProduct';
 import SalesPlan from '../pages/SalesPlan';
 import CreateSalesPlan from '../pages/CreateSalesPlan';
+import Producers from '../pages/Producers';
+import CreateProducer from '../pages/CreateProducer';
 
 const AppRoutes = () => {
     return (
@@ -26,6 +28,8 @@ const AppRoutes = () => {
                     <Route path="/vendedores/crear" element={<CreateSeller />} />
                     <Route path="/productos" element={<Products />} />
                     <Route path="/productos/crear" element={ <CreateProduct /> } />
+                    <Route path="/fabricantes" element={<Producers />} />
+                    <Route path="/fabricantes/crear" element={ <CreateProducer /> } />
                     <Route path="/vendedores/planes-venta/:sellerId" element={ <SalesPlan /> } />
                     <Route path="/vendedores/planes-venta/crear/:sellerId" element={ <CreateSalesPlan /> } />
                 </Route>
