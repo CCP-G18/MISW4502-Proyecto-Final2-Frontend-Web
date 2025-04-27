@@ -14,7 +14,7 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html'],
-      exclude: ['node_modules/', 'src/tests/', 'vite.config.js', 'eslint.config.js', 'src/App.jsx', 'src/main.jsx'],
+      exclude: ['node_modules/', 'src/tests/', 'vite.config.js', 'eslint.config.js', 'src/App.jsx', 'src/main.jsx', 'src/api'],
     },
   },
   server: {
