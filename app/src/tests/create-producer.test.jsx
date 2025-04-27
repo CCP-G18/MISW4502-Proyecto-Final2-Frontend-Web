@@ -90,7 +90,7 @@ describe('Componente CrearFabricante', () => {
     fireEvent.change(screen.getByPlaceholderText('Ingresa el apellido del contacto principal'), { target: { value: 'Pérez' } });
     fireEvent.change(screen.getByPlaceholderText('Ingresa el teléfono del contacto principal'), { target: { value: '987654321' } });
     fireEvent.change(screen.getByPlaceholderText('Ingresa el correo del contacto principal'), { target: { value: 'contacto@example.com' } });
-    fireEvent.change(screen.getByTestId('country-select'), { target: { value: '1' } });
+    fireEvent.change(screen.getByTestId('country-select'), { target: { value: 'País 1' } });
 
 
     const submitButton = screen.getByRole('button', { name: /crear/i });
@@ -108,7 +108,7 @@ describe('Componente CrearFabricante', () => {
         contact_lastname: 'Pérez',
         contact_phone: '987654321',
         contact_email: 'contacto@example.com',
-        country: '1',
+        country: 'País 1',
       });
     });
   });
@@ -136,7 +136,7 @@ describe('Componente CrearFabricante', () => {
     fireEvent.change(screen.getByPlaceholderText('Ingresa el apellido del contacto principal'), { target: { value: 'Pérez' } });
     fireEvent.change(screen.getByPlaceholderText('Ingresa el teléfono del contacto principal'), { target: { value: '987654321' } });
     fireEvent.change(screen.getByPlaceholderText('Ingresa el correo del contacto principal'), { target: { value: 'contacto@example.com' } });
-    fireEvent.change(screen.getByTestId('country-select'), { target: { value: '1' } });
+    fireEvent.change(screen.getByTestId('country-select'), { target: { value: 'País 1' } });
 
     const submitButton = screen.getByRole('button', { name: /crear/i });
     fireEvent.click(submitButton);
