@@ -1,7 +1,7 @@
 import { vi } from 'vitest';
 
-vi.mock('../api/manufactures', () => ({
-  getManufactures: vi.fn(),
+vi.mock('../api/producers', () => ({
+  getProducers: vi.fn(),
 }));
 
 vi.mock('../api/categories', () => ({
@@ -22,7 +22,7 @@ import { MemoryRouter } from 'react-router';
 import { describe, it, beforeEach, expect } from 'vitest';
 import CreateProduct from '../pages/CreateProduct';
 import { useNotification } from '../context/NotificationContext';
-import { getManufactures } from '../api/manufactures';
+import { getProducers } from '../api/producers';
 import { getCategories } from '../api/categories';
 import { createProduct } from '../api/products';
 
@@ -33,7 +33,7 @@ describe('Componente CrearProducto', () => {
   });
 
   it('debería renderizar correctamente los campos del formulario', async () => {
-    getManufactures.mockResolvedValue([{ id: '1', nombre: 'Fabricante 1' }]);
+    getProducers.mockResolvedValue([{ id: '1', name: 'Fabricante 1' }]);
     getCategories.mockResolvedValue([{ id: '1', nombre: 'Categoría 1' }]);
 
     render(
@@ -73,7 +73,7 @@ describe('Componente CrearProducto', () => {
   });
 
   it('debería crear el producto cuando el formulario es válido', async () => {
-    getManufactures.mockResolvedValue([{ id: '1', nombre: 'Fabricante 1' }]);
+    getProducers.mockResolvedValue([{ id: '1', name: 'Fabricante 1' }]);
     getCategories.mockResolvedValue([{ id: '1', nombre: 'Categoría 1' }]);
     createProduct.mockResolvedValue({});
 
@@ -112,7 +112,7 @@ describe('Componente CrearProducto', () => {
     const mockShowNotification = vi.fn();
     useNotification.mockReturnValue({ showNotification: mockShowNotification });
 
-    getManufactures.mockResolvedValue([{ id: '1', nombre: 'Fabricante 1' }]);
+    getProducers.mockResolvedValue([{ id: '1', name: 'Fabricante 1' }]);
     getCategories.mockResolvedValue([{ id: '1', nombre: 'Categoría 1' }]);
     createProduct.mockRejectedValue(new Error('Error de API'));
 

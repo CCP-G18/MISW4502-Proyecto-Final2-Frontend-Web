@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useNotification } from '../context/NotificationContext';
-import { getManufactures } from '../api/manufactures';
+import { getProducers } from '../api/producers';
 import { createProduct } from '../api/products';
 import { getCategories } from '../api/categories';
 
@@ -32,7 +32,7 @@ const CreateProduct = () => {
     useEffect(() => {
         const uploadManufactures = async () => {
             try {
-                const data = await getManufactures();
+                const data = await getProducers();
                 setManufactures(data);
             } catch {
                 setManufactures([]);
@@ -134,7 +134,7 @@ const CreateProduct = () => {
                         <select data-testid="manufacturer-select" name="manufacturer_id" value={formData.manufacturer_id} onChange={handleChange} className={`w-full border border-gray-300 rounded-md px-3 py-2 ${errors.manufacturer_id ? 'border-red-500 focus:border-red-500' : 'focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]'}`}>
                             <option value="" >Fabricantes</option>
                             {manufactures.map((fab) => (
-                                <option key={fab.id} value={fab.id}>{fab.nombre}</option>
+                                <option key={fab.id} value={fab.id}>{fab.name}</option>
                             ))}
                         </select>
                         {errors.manufacturer_id && <p className="text-red-500 text-sm">{errors.manufacturer_id}</p>}
