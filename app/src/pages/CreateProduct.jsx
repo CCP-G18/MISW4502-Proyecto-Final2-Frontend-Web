@@ -57,10 +57,10 @@ const CreateProduct = () => {
 
         if (!formData.description.trim()) newErrors.description = 'La descripción del producto es requerida';
 
-        if (!formData.quantity.trim()) newErrors.quantity = 'La cantidad del producto es requerido';
+        if (!formData.quantity.toString().trim()) newErrors.quantity = 'La cantidad del producto es requerido';
         if (parseInt(formData.quantity) < 0) newErrors.quantity = 'La cantidad del producto debe ser mayor a cero';
 
-        if (!formData.unit_amount.trim()) newErrors.unit_amount = 'El valor por unidad debe ser requerido';
+        if (!formData.unit_amount.toString().trim()) newErrors.unit_amount = 'El valor por unidad debe ser requerido';
         if (parseInt(formData.unit_amount) < 0) newErrors.unit_amount = 'El valor por unidad debe ser mayor a cero';
 
         if (!formData.manufacturer_id.trim()) newErrors.manufacturer_id = 'Se debe escoger un fabricante';
