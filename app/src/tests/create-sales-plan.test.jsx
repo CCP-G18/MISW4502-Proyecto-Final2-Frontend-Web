@@ -57,7 +57,7 @@ describe('Componente CreateSalesPlan', () => {
     await waitFor(() => {
       expect(screen.getByText('La fecha de inicio es requerida')).toBeTruthy();
       expect(screen.getByText('La fecha de finalización es requerida')).toBeTruthy();
-      expect(screen.getByText('El valor por unidad debe ser requerido')).toBeTruthy();
+      expect(screen.getByText('Las metas de ventas deben ser requerido')).toBeTruthy();
     });
   });
 
@@ -114,7 +114,7 @@ describe('Componente CreateSalesPlan', () => {
       expect(showNotificationMock).toHaveBeenCalledOnce();
       expect(showNotificationMock).toHaveBeenCalledWith(
         'error',
-        'Error al crear el producto!',
+        'Error al crear el plan de venta!',
         'Error al crear'
       );
     });

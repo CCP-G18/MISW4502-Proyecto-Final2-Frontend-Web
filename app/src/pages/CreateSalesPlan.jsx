@@ -29,8 +29,8 @@ const CreateSalesPlan = () => {
 
         if (!formData.end_date.trim()) newErrors.end_date = 'La fecha de finalización es requerida';
 
-        if (!formData.sales_goals.trim()) newErrors.sales_goals = 'El valor por unidad debe ser requerido';
-        if (parseInt(formData.sales_goals) < 0) newErrors.sales_goals = 'El valor por unidad debe ser mayor a cero';
+        if (!formData.sales_goals.toString().trim()) newErrors.sales_goals = 'Las metas de ventas deben ser requerido';
+        if (parseInt(formData.sales_goals) < 0) newErrors.sales_goals = 'Las metas de ventas deben ser mayor a cero';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -46,12 +46,12 @@ const CreateSalesPlan = () => {
                 state: {
                     showNotification: true,
                     type: 'success',
-                    title: 'Producto creado!',
-                    message: 'Producto creado con éxito',
+                    title: 'Plan de venta creado!',
+                    message: 'Plan de venta creado con éxito',
                 },
             });
         } catch (error) {
-            showNotification('error', 'Error al crear el producto!', error.message);
+            showNotification('error', 'Error al crear el plan de venta!', error.message);
         }
     };
 
@@ -77,7 +77,7 @@ const CreateSalesPlan = () => {
                         {errors.initial_date && <p className="text-red-500 text-sm">{errors.initial_date}</p>}
                     </div>
                     <div>
-                        <label htmlFor="end_date"  className="block text-sm font-medium mb-1">Fecha de finalización</label>
+                        <label htmlFor="end_date" className="block text-sm font-medium mb-1">Fecha de finalización</label>
                         <input
                             id="end_date"
                             name="end_date"
@@ -94,7 +94,7 @@ const CreateSalesPlan = () => {
                     </div>
                     <div>
                         <label htmlFor="sales_goals" className="block text-sm font-medium mb-1">Metas de Ventas</label>
-                        <input id="sales_goals" name="sales_goals" type="number" value={formData.sales_goals} onChange={handleChange} placeholder="Ingresa el precio unitario del producto" className={`w-full border border-gray-300 rounded-md px-3 py-2 ${errors.sales_goals ? 'border-red-500 focus:border-red-500' : 'focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]'}`} />
+                        <input id="sales_goals" name="sales_goals" type="number" value={formData.sales_goals} onChange={handleChange} placeholder="Ingresa las metas de venta del plan de venta" className={`w-full border border-gray-300 rounded-md px-3 py-2 ${errors.sales_goals ? 'border-red-500 focus:border-red-500' : 'focus:outline-none focus:ring-2 focus:ring-[var(--color-secondary)]'}`} />
                         {errors.sales_goals && <p className="text-red-500 text-sm">{errors.sales_goals}</p>}
                     </div>
                 </div>
