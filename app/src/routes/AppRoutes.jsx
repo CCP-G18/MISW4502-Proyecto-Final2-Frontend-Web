@@ -13,6 +13,7 @@ import SalesPlan from '../pages/SalesPlan';
 import CreateSalesPlan from '../pages/CreateSalesPlan';
 import Producers from '../pages/Producers';
 import CreateProducer from '../pages/CreateProducer';
+import CreateProductMassive from '../pages/CreateProductMassive';
 
 const AppRoutes = () => {
     return (
@@ -32,6 +33,7 @@ const AppRoutes = () => {
                     <Route path="/fabricantes/crear" element={ <CreateProducer /> } />
                     <Route path="/vendedores/planes-venta/:sellerId" element={ <SalesPlan /> } />
                     <Route path="/vendedores/planes-venta/crear/:sellerId" element={ <CreateSalesPlan /> } />
+                    <Route path="/productos/crear-masivo" element={<CreateProductMassive />} />
                 </Route>
             </Route>
         </Routes>
