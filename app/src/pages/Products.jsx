@@ -94,7 +94,7 @@ const Products = () => {
       <div className="flex justify-between mb-4">
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">Lista de productos</h1>
-          <Link to="#" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear producto masivo</Link>
+          <Link to="/productos/crear-masivo" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear producto masivo</Link>
           <Link to="/productos/crear" className="bg-gray-600 text-white px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-700 transition">Crear producto individual</Link>
         </div>
         <input type="text" placeholder="Buscar..." value={globalFilter ?? ''} onChange={(e) => setGlobalFilter(e.target.value)} className="px-3 py-1 border rounded-md w-full max-w-sm" />
