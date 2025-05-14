@@ -68,17 +68,16 @@ const Sellers = () => {
                     const vendedor = row.original;
                 
                     const handlePlanes = () => {
-                        console.log('Planes de venta para', vendedor.name);
-                        console.log('Planes de venta para', vendedor.id);
-                        navigate(`/vendedores/planes-venta/${vendedor.id}`, {
-                            state:  {
-                                sellerName: vendedor.name,
-                            },
-                        });
+                        localStorage.setItem("sellerId", vendedor.id)
+                        navigate(`/vendedores/planes-venta/${vendedor.id}`);
                     };
                 
                     const handleInforme = () => {
-                        console.log('Informe de', vendedor.name);
+                        navigate('/vendedores/informe', {
+                            state: {
+                                seller: vendedor,
+                            },
+                        });
                     };
                 
                     return (

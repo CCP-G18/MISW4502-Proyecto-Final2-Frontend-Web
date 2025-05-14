@@ -16,7 +16,7 @@ const SalesPlan = () => {
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(false);
     const [sorting, setSorting] = useState([
-        { id: 'updated_at', desc: true }
+        { id: 'initial_date', desc: true }
     ]);
     const [notified, setNotified] = useState(false);
     const { showNotification } = useNotification();
@@ -25,7 +25,6 @@ const SalesPlan = () => {
 
     useEffect(() => {
         const uploadSalesPlans = async () => {
-            console.log("seller id", sellerId);
             setLoading(true);
             try {
                 const data = await getSalesPlanBySeller(sellerId);

@@ -14,6 +14,7 @@ import CreateSalesPlan from '../pages/CreateSalesPlan';
 import Producers from '../pages/Producers';
 import CreateProducer from '../pages/CreateProducer';
 import CreateProductMassive from '../pages/CreateProductMassive';
+import ReportSalesPlan from '../pages/ReportSalesPlan';
 
 const AppRoutes = () => {
     return (
@@ -34,6 +35,7 @@ const AppRoutes = () => {
                     <Route path="/vendedores/planes-venta/:sellerId" element={ <SalesPlan /> } />
                     <Route path="/vendedores/planes-venta/crear/:sellerId" element={ <CreateSalesPlan /> } />
                     <Route path="/productos/crear-masivo" element={<CreateProductMassive />} />
+                    <Route path="/vendedores/informe" element={<ReportSalesPlan />} />
                 </Route>
             </Route>
         </Routes>
