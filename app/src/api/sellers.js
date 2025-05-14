@@ -69,3 +69,21 @@ export const createSalesPlanBySeller = async (sellerId, salesPlanData) => {
         throw new Error(message);
     }
 }
+
+export const generateReportSeller = async (sellerId) => {
+    try {
+        const response = await axios.get(
+            `${API_URL}/sellers/${sellerId}/report-sales-plans`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                }
+            }
+        );
+        console.log('response', response);
+        return response;
+    } catch (error) {
+        
+    }
+}
