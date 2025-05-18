@@ -17,7 +17,8 @@ export const getWarehousesByProduct = async (productId) => {
             {
                 "place": "No location",
                 "warehouse": {
-                    "location": "No location"
+                    "location": "No location",
+                    "name": "No location"
                 }
             }
         ];
