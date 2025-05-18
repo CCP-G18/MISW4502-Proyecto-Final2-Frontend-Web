@@ -16,6 +16,20 @@ export const getProducts = async () => {
     }
 }
 
+export const getProductById = async (productId) => {
+    try {
+        const response = await axios.get(`${API_URL}/products/${productId}`, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            },
+        });
+        return response.data.data;
+    } catch {
+        return [];
+    }
+}
+
 export const createProduct = async (productData) => {
     try {
         const response = await axios.post(
