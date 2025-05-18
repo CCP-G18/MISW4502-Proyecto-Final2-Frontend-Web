@@ -67,13 +67,6 @@ const ProductDetail = () => {
         <div className="flex gap-4">
           <h1 className="text-xl font-bold">{product?.name} - Producto</h1>
         </div>
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={globalFilter}
-          onChange={(e) => setGlobalFilter(e.target.value)}
-          className="px-3 py-1 border rounded-md w-full max-w-sm"
-        />
       </div>
 
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
