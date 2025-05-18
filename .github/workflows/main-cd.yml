@@ -25,7 +25,7 @@ jobs:
         run: npm install -g pnpm
 
       - name: Install dependencies
-        run: cd app && pnpm install --frozen-lockfile
+        run: cd app && pnpm install --no-frozen-lockfile
 
       - name: Build project
         env:
