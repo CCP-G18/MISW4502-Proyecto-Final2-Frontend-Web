@@ -16,6 +16,7 @@ import CreateProducer from '../pages/CreateProducer';
 import CreateProductMassive from '../pages/CreateProductMassive';
 import ReportSalesPlan from '../pages/ReportSalesPlan';
 import ProductDetail from '../pages/ProductDetail';
+import DeliveryRoutes from '../pages/DeliveryRoutes';
 
 const AppRoutes = () => {
     return (
@@ -38,6 +39,7 @@ const AppRoutes = () => {
                     <Route path="/vendedores/planes-venta/crear/:sellerId" element={ <CreateSalesPlan /> } />
                     <Route path="/productos/crear-masivo" element={<CreateProductMassive />} />
                     <Route path="/vendedores/informe" element={<ReportSalesPlan />} />
+                    <Route path="/rutas-de-entrega" element={<DeliveryRoutes />} />
                 </Route>
             </Route>
         </Routes>
