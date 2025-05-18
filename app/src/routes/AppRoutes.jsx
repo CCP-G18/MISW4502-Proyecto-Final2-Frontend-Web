@@ -15,6 +15,7 @@ import Producers from '../pages/Producers';
 import CreateProducer from '../pages/CreateProducer';
 import CreateProductMassive from '../pages/CreateProductMassive';
 import ReportSalesPlan from '../pages/ReportSalesPlan';
+import ProductDetail from '../pages/ProductDetail';
 
 const AppRoutes = () => {
     return (
@@ -30,6 +31,7 @@ const AppRoutes = () => {
                     <Route path="/vendedores/crear" element={<CreateSeller />} />
                     <Route path="/productos" element={<Products />} />
                     <Route path="/productos/crear" element={ <CreateProduct /> } />
+                    <Route path="/productos/:productId" element={ <ProductDetail /> } />
                     <Route path="/fabricantes" element={<Producers />} />
                     <Route path="/fabricantes/crear" element={ <CreateProducer /> } />
                     <Route path="/vendedores/planes-venta/:sellerId" element={ <SalesPlan /> } />

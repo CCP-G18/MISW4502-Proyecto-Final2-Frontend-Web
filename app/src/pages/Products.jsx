@@ -63,7 +63,28 @@ const Products = () => {
         accessorKey: 'unit_amount',
         header: 'Precio unitario',
         cell: info => formatCurrency(info.getValue())
-      },],
+      },
+      {
+        id: 'acciones',
+        header: 'Acciones',
+        cell: ({ row }) => {
+            const vendedor = row.original;
+        
+            const handleSearch = () => {
+                navigate(`/productos/${vendedor.id}`);
+            };
+        
+            return (
+                <div className="flex space-x-2">
+                    <button onClick={handleSearch} className="bg-[#E8DDCB] text-gray-800 px-3 font-semibold py-1 rounded-md hover:bg-gray-300 transition">
+                        Buscar
+                    </button>
+                </div>
+            );
+        },
+    },
+    ],
+      
     []
   );
 
