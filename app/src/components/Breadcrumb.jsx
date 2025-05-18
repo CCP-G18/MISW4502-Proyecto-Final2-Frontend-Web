@@ -25,6 +25,9 @@ export default function Breadcrumb() {
                 if (name === 'planes-venta') {
                     label = 'Planes de venta';
                 }
+                if (name === 'rutas-de-entrega') {
+                    label = 'Rutas de entrega';
+                }
                 if (name === 'vendedores') {
                     label = 'Vendedores';
                 }

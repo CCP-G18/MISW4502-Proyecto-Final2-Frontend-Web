@@ -20,7 +20,7 @@ export default function Sidebar() {
                 <NavLink to="/productos" className="flex items-center gap-2 hover:text-gray-300">
                     <CubeIcon className="w-5 h-5"/> Productos
                 </NavLink>
-                <NavLink to="/" className="flex items-center gap-2 hover:text-gray-300">
+                <NavLink to="/rutas-de-entrega" className="flex items-center gap-2 hover:text-gray-300">
                     <MapIcon className="w-5 h-5"/> Rutas de entrega
                 </NavLink>
             </nav>

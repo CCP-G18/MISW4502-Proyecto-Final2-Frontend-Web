@@ -13,9 +13,9 @@ const MainLayout = () => {
                 <Sidebar />
                 <div className="flex flex-col flex-1">
                     <Topbar />
-                    <main className='flex-grow flex justify-center items-center p-2 bg-gray-300'>
-                        <div className='w-full h-full p-4 border rounded-sm bg-gray-100'>
-                                <Outlet />
+                    <main className='flex-grow flex justify-center items-center p-2 bg-gray-300 overflow-auto'>
+                        <div className='w-full h-full p-4 border rounded-sm bg-gray-100 overflow-auto'>
+                            <Outlet />
                         </div>
                     </main>
                     <Footer />
