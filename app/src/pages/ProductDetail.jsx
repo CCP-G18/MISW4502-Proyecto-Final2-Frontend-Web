@@ -77,35 +77,29 @@ const ProductDetail = () => {
       </div>
 
       <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {warehouses.map((warehouse, index) => (
+        {warehouses?.map((warehouse, index) => (
           <div key={index} className="border rounded-lg p-4 shadow-sm">
             <h2 className="text-sm font-semibold text-gray-800 mb-3">
               Datos del producto
             </h2>
             <ul className="text-sm text-gray-600 space-y-1">
               <li>
-                <span className="font-medium text-gray-800">Nombre:</span>{" "}
-                {product.name}
+                <span className="font-medium text-gray-800">Nombre:</span> {product?.name}
               </li>
               <li>
-                <span className="font-medium text-gray-800">Cantidad:</span>{" "}
-                {product.quantity}
+                <span className="font-medium text-gray-800">Cantidad:</span> {product?.quantity}
               </li>
               <li>
-                <span className="font-medium text-gray-800">Precio unitario:</span>{" "}
-                ${product.unit_amount.toFixed(2)}
+                <span className="font-medium text-gray-800">Precio unitario:</span> ${product?.unit_amount.toFixed(2)}
               </li>
               <li>
-                <span className="font-medium text-gray-800">Bodega:</span>{" "}
-                {warehouse.warehouse.name}
+                <span className="font-medium text-gray-800">Bodega:</span> {warehouse.warehouse.name}
               </li>
               <li>
-                <span className="font-medium text-gray-800">Ubicación de la bodega:</span>{" "}
-                {warehouse.warehouse.location}
+                <span className="font-medium text-gray-800">Ubicación de la bodega:</span> {warehouse.warehouse.location}
               </li>
               <li>
-                <span className="font-medium text-gray-800">Lugar el bodega:</span>{" "}
-                {warehouse.place}
+                <span className="font-medium text-gray-800">Lugar el bodega:</span> {warehouse.place}
               </li>
             </ul>
           </div>
