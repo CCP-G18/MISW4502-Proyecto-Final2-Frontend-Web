@@ -17,3 +17,13 @@
     display:flex;
     flex-direction: column;
 }
+
+body > .skiptranslate,
+body > .goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+  position: static !important;
+}
