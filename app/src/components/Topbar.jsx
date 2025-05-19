@@ -40,7 +40,7 @@ export default function Topbar() {
         const domain = getCookieDomain();
 
         if (lang === 'es') {
-            document.cookie = `googtrans=;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+            document.cookie = `googtrans=/es/;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
             window.location.reload();
         } else {
             document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
