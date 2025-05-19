@@ -39,13 +39,18 @@ export default function Topbar() {
     const changeLanguage = (lang) => {
         const domain = window.location.hostname;
         console.log(lang)
+
+        document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
+        window.location.reload();
+        /* if (lang === 'es') {
+
         if (lang === 'es') {
             document.cookie = `googtrans=/es/;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
             window.location.reload();
         } else {
             document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
             window.location.reload();
-        }
+        } */
     };
 
     return (
