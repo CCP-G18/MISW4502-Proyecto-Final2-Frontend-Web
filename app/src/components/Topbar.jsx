@@ -4,37 +4,45 @@ import { useEffect } from 'react';
 
 export default function Topbar() {
 
-  useEffect(() => {
-    const addScript = () => {
-        const script = document.createElement('script');
-        script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-        script.async = true;
-        document.body.appendChild(script);
-    };
+    useEffect(() => { 
+        const addScript = () => {
+            const script = document.createElement('script');
+            script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+            script.async = true;
+            document.body.appendChild(script);
+        };
 
-    window.googleTranslateElementInit = () => {
-        new window.google.translate.TranslateElement({
-            pageLanguage: 'es',
-            includedLanguages: 'en,es',
-            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-            autoDisplay: false, 
-        }, 'google_translate_element');
-    };
+        window.googleTranslateElementInit = () => {
+            new window.google.translate.TranslateElement({
+                pageLanguage: 'es',
+                includedLanguages: 'en,es',
+                layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+                autoDisplay: false, 
+            }, 'google_translate_element');
+        };
 
-    addScript();
-  }, []);
+        addScript();
+    }, []);
+
+    const getCookieDomain = () => {
+        const hostname = window.location.hostname;
+        const parts = hostname.split('.');
+        if(parts.length > 2){
+            return '.' + parts.slice(parts.length - 2).join('.');
+        } else if(parts.length === 2){
+            return '.' + hostname;
+        } else {
+            return hostname;
+        }
+    }
 
     const changeLanguage = (lang) => {
-        const domain = window.location.hostname;
-        const domainParts = domain.split('.');
-        const cookieDomain = domainParts.length > 1
-            ? '.' + domainParts.slice(-2).join('.')
-            : domain;
-        if (lang === 'es') {
-            document.cookie = `googtrans=;path=/;domain=${cookieDomain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+        const domain = getCookieDomain();
+        if(lang === 'es'){
+            document.cookie = `googtrans=;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; SameSite=Lax`;
             setTimeout(() => window.location.reload(), 100);
         } else {
-            document.cookie = `googtrans=/es/${lang};path=/;domain=${cookieDomain};`;
+            document.cookie = `googtrans=/es/${lang};path=/;domain=${domain}; Secure; SameSite=Lax`;
             setTimeout(() => window.location.reload(), 100);
         }
     };
