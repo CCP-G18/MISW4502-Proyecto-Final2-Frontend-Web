@@ -25,13 +25,17 @@ export default function Topbar() {
   }, []);
 
     const changeLanguage = (lang) => {
+        const domain = window.location.hostname;
+        const domainParts = domain.split('.');
+        const cookieDomain = domainParts.length > 1
+            ? '.' + domainParts.slice(-2).join('.')
+            : domain;
         if (lang === 'es') {
-            document.cookie = 'googtrans=;path=/;domain=' + window.location.hostname + ';expires=Thu, 01 Jan 1970 00:00:00 UTC;';
-            window.location.reload();
+            document.cookie = `googtrans=;path=/;domain=${cookieDomain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+            setTimeout(() => window.location.reload(), 100);
         } else {
-            const domain = window.location.hostname;
-            document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
-            window.location.reload();
+            document.cookie = `googtrans=/es/${lang};path=/;domain=${cookieDomain};`;
+            setTimeout(() => window.location.reload(), 100);
         }
     };
 
