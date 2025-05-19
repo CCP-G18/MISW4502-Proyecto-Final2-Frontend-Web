@@ -37,11 +37,12 @@ export default function Topbar() {
     }
 
     const changeLanguage = (lang) => {
+        const domain = getCookieDomain();
+
         if (lang === 'es') {
-            document.cookie = 'googtrans=;path=/;domain=' + window.location.hostname + ';expires=Thu, 01 Jan 1970 00:00:00 UTC;';
+            document.cookie = `googtrans=;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
             window.location.reload();
         } else {
-            const domain = window.location.hostname;
             document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
             window.location.reload();
         }
