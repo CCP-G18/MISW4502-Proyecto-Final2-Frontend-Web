@@ -37,7 +37,6 @@ export default function Topbar() {
     }
 
     const changeLanguage = (lang) => {
-<<<<<<< HEAD
         if (lang === 'es') {
             document.cookie = 'googtrans=;path=/;domain=' + window.location.hostname + ';expires=Thu, 01 Jan 1970 00:00:00 UTC;';
             window.location.reload();
@@ -45,15 +44,6 @@ export default function Topbar() {
             const domain = window.location.hostname;
             document.cookie = `googtrans=/es/${lang};path=/;domain=${domain};`;
             window.location.reload();
-=======
-        const domain = getCookieDomain();
-        if(lang === 'es'){
-            document.cookie = `googtrans=;path=/;domain=${domain};expires=Thu, 01 Jan 1970 00:00:00 UTC; Secure; SameSite=Lax`;
-            setTimeout(() => window.location.reload(), 100);
-        } else {
-            document.cookie = `googtrans=/es/${lang};path=/;domain=${domain}; Secure; SameSite=Lax`;
-            setTimeout(() => window.location.reload(), 100);
->>>>>>> main
         }
     };
 
